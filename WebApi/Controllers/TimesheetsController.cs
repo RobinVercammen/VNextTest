@@ -28,9 +28,9 @@ namespace WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Timesheet> Get(string id)
         {
-            return "value";
+            return await _timesheetService.getTimesheet(id);
         }
 
         // POST api/values

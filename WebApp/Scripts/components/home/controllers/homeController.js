@@ -5,7 +5,6 @@
 
         $scope.timesheets = [];
         $http.get(url).success(function (timesheets) {
-            console.log(timesheets);
             $scope.timesheets = timesheets;
         });
     }]);

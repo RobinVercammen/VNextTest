@@ -1,6 +1,21 @@
 ﻿<div id="home-container" class="container">
     <h1>Timesheets</h1>
-    <div ng-repeat="timesheet in timesheets">
-        <p>{{timesheet.consultant}}</p>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Consultant</th>
+                <th>Timesheet</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="timesheet in timesheets">
+                <td>{{timesheet.date}}</td>
+                <td>{{timesheet.consultant}}</td>
+                <td>{{timesheet.file}}</td>
+                <td>{{timesheet.status}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

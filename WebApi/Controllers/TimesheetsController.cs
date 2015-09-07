@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using WebApi.Models;
+using WebApi.Services;
+
+// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TimesheetsController : Controller
     {
+        private readonly ITimesheetService _timesheetService;
+
+        public TimesheetsController(ITimesheetService timesheetService)
+        {
+            _timesheetService = timesheetService;
+        }
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Timesheet>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _timesheetService.getTimesheets();
         }
 
         // GET api/values/5
@@ -25,8 +35,9 @@ namespace WebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<bool> Post([FromBody]Timesheet timesheet)
         {
+            return await _timesheetService.addTimesheet(timesheet);
         }
 
         // PUT api/values/5

@@ -7,20 +7,30 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
+using MongoDB.Driver;
+using WebApi.Services;
+using Microsoft.Framework.Configuration;
+using Microsoft.Framework.Runtime;
 
 namespace WebApi
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
+            Configuration = new ConfigurationBuilder(appEnv.ApplicationBasePath).AddJsonFile("config.json").Build();
         }
 
+        public IConfiguration Configuration { get; set; }
         // This method gets called by a runtime.
         // Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddInstance<IConfiguration>(Configuration);
+            services.AddCustomBindings(Configuration);
             services.AddMvc();
+
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();

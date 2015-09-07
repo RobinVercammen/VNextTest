@@ -11,6 +11,8 @@ using MongoDB.Driver;
 using WebApi.Services;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.Runtime;
+using Microsoft.AspNet.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace WebApi
 {
@@ -29,7 +31,25 @@ namespace WebApi
 
             services.AddInstance<IConfiguration>(Configuration);
             services.AddCustomBindings(Configuration);
-            services.AddMvc();
+
+            services.AddMvc().Configure<MvcOptions>(options =>
+            {
+                options.OutputFormatters.OfType<JsonOutputFormatter>()
+                       .First()
+                       .SerializerSettings
+                       .ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
+
+            // CORS
+            services.AddCors();
+
+            var policy = new Microsoft.AspNet.Cors.Core.CorsPolicy();
+            policy.Headers.Add("*");
+            policy.Methods.Add("*");
+            policy.Origins.Add("*");
+            policy.SupportsCredentials = true;
+
+            services.ConfigureCors(x => x.AddPolicy("mypolicy", policy));
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
@@ -41,6 +61,9 @@ namespace WebApi
         {
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
+
+            // CORS
+            app.UseCors("mypolicy");
 
             // Add MVC to the request pipeline.
             app.UseMvc();

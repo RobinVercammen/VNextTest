@@ -1,10 +1,22 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="vNextApp">
 <head>
-    <title></title>
+    <title>Timesheets</title>
 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div id="view-container">
+        <div id="view-frame" ng-view></div>
+    </div>
 
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="Scripts/app.js"></script>
 </body>
 </html>

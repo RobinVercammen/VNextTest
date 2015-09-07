@@ -4,7 +4,8 @@
     'vNextApp.services',
     'vNextApp.controllers',
 
-    'vNextApp.home'
+    'vNextApp.home',
+    'vNextApp.addTimesheet'
 ]);
 
 angular.module('vNextApp.services', []);

@@ -37,7 +37,15 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<bool> Post([FromBody]Timesheet timesheet)
         {
-            return await _timesheetService.addTimesheet(timesheet);
+            var timesheets = new Timesheet()
+            {
+                Company = "Involved",
+                Consultant = "Robin",
+                Date = DateTime.Now,
+                File = "test_1.pdf",
+                Status = TimsheetStatusEnum.Accepted
+            };
+            return await _timesheetService.addTimesheet(timesheets);
         }
 
         // PUT api/values/5

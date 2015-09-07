@@ -41,15 +41,13 @@ namespace WebApi.Controllers
         }
 
         // PUT api/values/5
-        //[HttpPut("{id}")]
-        //public async Task<Timesheet> Put(string id, [FromBody] Timesheet updatedTimesheet)
-        //{
-        //    try
-        //    {
-        //        var timesheet = await _timesheetService.getTimesheet(id);
+        [HttpPut("{id}")]
+        public async Task<Timesheet> Put(string id, [FromBody] Timesheet updatedTimesheet)
+        {
+            var timesheet = await _timesheetService.getTimesheet(id);
 
-        //    }
-        //}
+            return await _timesheetService.updateTimesheet(updatedTimesheet);
+        }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

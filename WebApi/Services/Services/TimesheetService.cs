@@ -57,12 +57,14 @@ namespace WebApi.Services
 
         public async Task<Timesheet> updateTimesheet(Timesheet timesheet)
         {
-            return null;
             try
             {
+                await _collection.ReplaceOneAsync(t => t._id == timesheet._id, timesheet);
+                return timesheet;
             }
             catch (Exception)
             {
+                return null;
             }
         }
     }

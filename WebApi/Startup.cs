@@ -11,6 +11,8 @@ using MongoDB.Driver;
 using WebApi.Services;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.Runtime;
+using Microsoft.AspNet.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace WebApi
 {
@@ -29,7 +31,14 @@ namespace WebApi
 
             services.AddInstance<IConfiguration>(Configuration);
             services.AddCustomBindings(Configuration);
-            services.AddMvc();
+
+            services.AddMvc().Configure<MvcOptions>(options =>
+            {
+                options.OutputFormatters.OfType<JsonOutputFormatter>()
+                       .First()
+                       .SerializerSettings
+                       .ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             // CORS
             services.AddCors();

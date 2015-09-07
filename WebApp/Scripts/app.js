@@ -2,7 +2,9 @@
     'ngRoute',
 
     'vNextApp.services',
-    'vNextApp.controllers'
+    'vNextApp.controllers',
+
+    'vNextApp.home'
 ]);
 
 angular.module('vNextApp.services', []);
@@ -23,5 +25,5 @@ vNextApp.config(['$logProvider', '$routeProvider',
 
 vNextApp.run(['$rootScope',
     function ($rootScope) {
-        console.log('Hi mum');
+        
     }]);

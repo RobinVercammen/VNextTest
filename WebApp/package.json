@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "name": "VNext",
+  "private": true,
+  "devDependencies": {
+    "bower": "^1.5.2",
+    "grunt": "^0.4.5"
+  }
+}

@@ -31,6 +31,17 @@ namespace WebApi
             services.AddCustomBindings(Configuration);
             services.AddMvc();
 
+            // CORS
+            services.AddCors();
+
+            var policy = new Microsoft.AspNet.Cors.Core.CorsPolicy();
+            policy.Headers.Add("*");
+            policy.Methods.Add("*");
+            policy.Origins.Add("*");
+            policy.SupportsCredentials = true;
+
+            services.ConfigureCors(x => x.AddPolicy("mypolicy", policy));
+
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
@@ -41,6 +52,9 @@ namespace WebApi
         {
             // Configure the HTTP request pipeline.
             app.UseStaticFiles();
+
+            // CORS
+            app.UseCors("mypolicy");
 
             // Add MVC to the request pipeline.
             app.UseMvc();

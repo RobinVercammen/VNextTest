@@ -1,4 +1,6 @@
 ﻿<div id="home-container" class="container">
-    <h1>Home</h1>
-    <p>{{greeting}}</p>
+    <h1>Timesheets</h1>
+    <div ng-repeat="timesheet in timesheets">
+        <p>{{timesheet.consultant}}</p>
+    </div>
 </div>

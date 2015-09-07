@@ -55,14 +55,14 @@ namespace WebApi.Services
             }
         }
 
-        public async Task<Timesheet> updateTimesheet(Timesheet timesheet)
+        public async Task<Timesheet> updateTimesheet(string id, Timesheet timesheet)
         {
             try
             {
-                await _collection.ReplaceOneAsync(t => t._id == timesheet._id, timesheet);
+                var x = await _collection.ReplaceOneAsync(t => t._id == new BsonObjectId(new ObjectId(id)), timesheet);
                 return timesheet;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return null;
             }

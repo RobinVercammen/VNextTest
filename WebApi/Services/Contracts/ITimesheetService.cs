@@ -13,6 +13,6 @@ namespace WebApi.Services
         Task<IEnumerable<Timesheet>> getTimesheets();
         Task<bool> removeTimesheet(Timesheet timesheet);
         Task<Timesheet> getTimesheet(string id);
-        Task<Timesheet> updateTimesheet(Timesheet timesheet);
+        Task<Timesheet> updateTimesheet(string id, Timesheet timesheet);
     }
 }

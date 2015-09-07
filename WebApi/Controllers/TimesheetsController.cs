@@ -44,9 +44,7 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<Timesheet> Put(string id, [FromBody] Timesheet updatedTimesheet)
         {
-            var timesheet = await _timesheetService.getTimesheet(id);
-
-            return await _timesheetService.updateTimesheet(updatedTimesheet);
+            return await _timesheetService.updateTimesheet(id, updatedTimesheet);
         }
 
         // DELETE api/values/5

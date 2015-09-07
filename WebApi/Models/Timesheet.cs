@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace WebApi.Models
 {
     public class Timesheet
     {
+        [BsonIgnoreIfDefault]
         public BsonObjectId _id { get; set; }
         public DateTime Date { get; set; }
 

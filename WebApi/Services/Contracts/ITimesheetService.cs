@@ -12,7 +12,7 @@ namespace WebApi.Services
         Task<bool> addTimesheet(Timesheet timesheet);
         Task<IEnumerable<Timesheet>> getTimesheets();
         Task<bool> removeTimesheet(Timesheet timesheet);
-        Task<Timesheet> getTimesheet(BsonObjectId id);
+        Task<Timesheet> getTimesheet(string id);
         Task<Timesheet> updateTimesheet(Timesheet timesheet);
     }
 }

@@ -28,31 +28,28 @@ namespace WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Timesheet> Get(string id)
         {
-            return "value";
+            return await _timesheetService.getTimesheet(id);
         }
 
         // POST api/values
         [HttpPost]
         public async Task<bool> Post([FromBody]Timesheet timesheet)
         {
-            var timesheets = new Timesheet()
-            {
-                Company = "Involved",
-                Consultant = "Robin",
-                Date = DateTime.Now,
-                File = "test_1.pdf",
-                Status = TimsheetStatusEnum.Accepted
-            };
-            return await _timesheetService.addTimesheet(timesheets);
+            return await _timesheetService.addTimesheet(timesheet);
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public async Task<Timesheet> Put(string id, [FromBody] Timesheet updatedTimesheet)
+        //{
+        //    try
+        //    {
+        //        var timesheet = await _timesheetService.getTimesheet(id);
+
+        //    }
+        //}
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

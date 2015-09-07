@@ -32,9 +32,11 @@ namespace WebApi.Services
             }
         }
 
-        public async Task<Timesheet> getTimesheet(BsonObjectId id)
+        public async Task<Timesheet> getTimesheet(string id)
         {
-            return new Timesheet();
+            var bsonId = new BsonObjectId(new ObjectId(id));
+
+            return (await (await _collection.FindAsync(x => x._id == bsonId)).ToListAsync()).FirstOrDefault();
         }
 
         public async Task<IEnumerable<Timesheet>> getTimesheets()

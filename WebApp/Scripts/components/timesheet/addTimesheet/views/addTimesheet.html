@@ -1,12 +1,27 @@
 ﻿<div id="timesheet-container" class="container">
     <div ng-controller="addTimesheetCtrl">
-        <form novalidate class="simple-form">
-            Company: <input type="text" ng-model="timesheet.company" /><br />
-            Consultant: <input type="text" ng-model="timesheet.consultant" /><br />
-            File: <input type="text" ng-model="timesheet.file"/><br />
-            Status: <input type="text" ng-model="timesheet.status" /><br />
-            Date: <input type="text" ng-model="timesheet.date" /><br />
-            <input type="submit" ng-click="addTimesheet(timesheet)" value="Save" />
+        <form novalidate>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" class="form-control" ng-model="timesheet.company" /><br />
+            </div>
+            <div class="form-group">
+                <label for="consultant">Consultant</label>
+                <input type="text" id="consultant" class="form-control" ng-model="timesheet.consultant" /><br />
+            </div>
+            <div class="form-group">
+                <label for="consultant">File</label>
+                <input type="text" id="file" class="form-control" ng-model="timesheet.file" /><br />
+            </div>
+            <div class="form-group">
+                <label for="consultant">Status</label>
+                <input type="text" id="status" class="form-control" ng-model="timesheet.status" /><br />
+            </div>
+            <div class="form-group">
+                <label for="consultant">Date</label>
+                <input type="text" id="date" class="form-control" ng-model="timesheet.date" /><br />
+            </div>
+            <input type="submit" class="btn btn-primary" ng-click="addTimesheet(timesheet)" value="Save" />
         </form>
     </div>
 </div>

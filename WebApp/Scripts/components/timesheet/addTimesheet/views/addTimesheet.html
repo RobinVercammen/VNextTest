@@ -1,0 +1,12 @@
+﻿<div id="timesheet-container" class="container">
+    <div ng-controller="addTimesheetCtrl">
+        <form novalidate class="simple-form">
+            Company: <input type="text" ng-model="timesheet.company" /><br />
+            Consultant: <input type="text" ng-model="timesheet.consultant" /><br />
+            File: <input type="text" ng-model="timesheet.file"/><br />
+            Status: <input type="text" ng-model="timesheet.status" /><br />
+            Date: <input type="text" ng-model="timesheet.date" /><br />
+            <input type="submit" ng-click="addTimesheet(timesheet)" value="Save" />
+        </form>
+    </div>
+</div>

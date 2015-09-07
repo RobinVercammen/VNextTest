@@ -9,7 +9,6 @@ namespace WebApi.Models
     public class Timesheet
     {
         public BsonObjectId _id { get; set; }
-        public string ConsultantName { get; set; }
         public DateTime Date { get; set; }
 
         public string Company { get; set; }
